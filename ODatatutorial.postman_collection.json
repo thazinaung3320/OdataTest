@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "e522ac0a-228e-4beb-ad39-53c8a4384193",
+		"name": "ODatatutorial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17341236"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"051bcd1f-0114-4b33-bdfa-99f1d0c9efed\",\n    \"createdAt\": \"2022-11-26T14:02:46.068Z\",\n    \"updatedAt\": \"2022-11-26T14:02:46.068Z\",\n    \"createdBy\": \"sithu\",\n    \"updatedBy\": \"sithu\",\n    \"item\": \"To complete ODataTutorials\",\n    \"status\": 0,\n    \"notes\": [\n      {\n        \"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n        \"createdAt\": \"2022-11-26T14:02:46.068Z\",\n        \"updatedAt\": \"2022-11-26T14:02:46.068Z\",\n        \"createdBy\": \"sithu\",\n        \"updatedBy\": \"sithu\",\n        \"messageNote\": \"it must use postgres db and must have one to many relationship\",\n        \"todoId\": \"051bcd1f-0114-4b33-bdfa-99f1d0c9efed\"\n      }\n    ]\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5146/v1/Todos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5146",
+					"path": [
+						"v1",
+						"Todos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get (expand)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5146/v1/Todos?$expand=notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5146",
+					"path": [
+						"v1",
+						"Todos"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "notes"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Child Entity Filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5146/v1/Todos?$expand=notes($filter=CreatedBy eq 'sithu')",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5146",
+					"path": [
+						"v1",
+						"Todos"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "notes($filter=CreatedBy eq 'sithu')"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter by Attribute",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5146/v1/Todos?$expand=notes&$filter=contains(item,'Mahar')",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5146",
+					"path": [
+						"v1",
+						"Todos"
+					],
+					"query": [
+						{
+							"key": "$expand",
+							"value": "notes"
+						},
+						{
+							"key": "$filter",
+							"value": "contains(item,'Mahar')"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
